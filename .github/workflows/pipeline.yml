@@ -12,6 +12,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: Dev
 
     steps:
       # Step 1: Check out the code from the repository
