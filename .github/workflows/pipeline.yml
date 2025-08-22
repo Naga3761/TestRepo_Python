@@ -33,3 +33,13 @@ jobs:
       # Step 4: Run tests
       - name: Run tests
         run: pytest
+        
+      # Step 5: Deploy into azure blob
+      - name: Upload math.py to Azure Blob
+        uses: bacongobbler/azure-blob-storage-upload@main
+        with:
+          source_dir: src
+          container_name: testnagacontainer
+          connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+          extra_args: '--pattern math.py'
+          overwrite: 'true'
